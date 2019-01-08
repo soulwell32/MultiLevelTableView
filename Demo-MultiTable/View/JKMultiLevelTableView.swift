@@ -112,6 +112,7 @@ class JKMultiLevelTableView: UITableView {
     
     func updateSelectedNode(nodeID:String) {
         selectedNodeID = nodeID
+        // TODO: TODO --- --- wait to debug
 //        tempNodes.forEach { (node) in
 //            if node.isSelected == true &&
 //        }
