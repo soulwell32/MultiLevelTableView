@@ -146,6 +146,9 @@ extension JKMultiLevelTableView : UITableViewDataSource,UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "JKMultiLevelCell") as! JKMultiLevelCell
         cell.node(node: tempNodes[indexPath.row])
         cell.cellIndicatorBlock = {[weak self] node in
+            if self?.selectBlock != nil {
+                self?.selectBlock!(node)
+            }
             self?.updateSelectedNode(nodeID: node.childrenID)
         }
         return cell
@@ -156,8 +159,9 @@ extension JKMultiLevelTableView : UITableViewDataSource,UITableViewDelegate {
         
         if node.isLeaf {
             //1.LeafNode处理点击事件
-            guard selectBlock != nil else {return}
-            selectBlock!(node)
+            if selectBlock != nil {
+                selectBlock!(node)
+            }
             updateSelectedNode(nodeID: node.childrenID)
             return
         } else {
@@ -171,6 +175,7 @@ extension JKMultiLevelTableView : UITableViewDataSource,UITableViewDelegate {
         if node.isExpand {
             //2.展开节点
             //2.1新增网络请求判断
+            /*
             if needRequestExpandNodes(node: node) {
                 FakeNetwork.shared.queryChildrenRegion(region: node.childrenID) {[weak self] (bool, nodeArray) in
                     if bool {
@@ -183,6 +188,10 @@ extension JKMultiLevelTableView : UITableViewDataSource,UITableViewDelegate {
                 expandNodesFor(parentID: node.childrenID!, insertIndex: indexPath.row)
                 tableView.insertRows(at: reloadArray!, with: .none)
             }
+            */
+            
+            expandNodesFor(parentID: node.childrenID!, insertIndex: indexPath.row)
+            tableView.insertRows(at: reloadArray!, with: .none)
         } else {
             //3.收起节点
             foldNodesFor(level: node.level!, currentIndex: indexPath.row)
