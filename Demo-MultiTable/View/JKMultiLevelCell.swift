@@ -15,6 +15,8 @@ class JKMultiLevelCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var arrowViewLeadingConstrain: NSLayoutConstraint!
     @IBOutlet weak var arrowViewWidthConstrain: NSLayoutConstraint!
+    @IBOutlet weak var tapView: UIView!
+    
     var cellIndicatorBlock:((JKNodeModel) -> Void)?
     var cellNode:JKNodeModel!
     let levelMarginDistance: CGFloat = 25
@@ -26,6 +28,8 @@ class JKMultiLevelCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(indicatorSelected(_:)))
+        tapView.addGestureRecognizer(tapGesture)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -58,7 +62,7 @@ class JKMultiLevelCell: UITableViewCell {
         }
     }
     
-    @IBAction func indicatorSelected(_ sender: UITapGestureRecognizer) {
+   @objc func indicatorSelected(_ sender: UITapGestureRecognizer) {
         guard cellIndicatorBlock != nil else {
             return
         }

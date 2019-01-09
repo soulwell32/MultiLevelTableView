@@ -28,31 +28,32 @@ class ViewController: UIViewController {
         self.view.addSubview(displayLevelView!)
     }
     
-    func fakeData() -> [JKNodeModel] {
-        let list = [["parentID":"", "name":"Node1", "ID":"1"],
-                    ["parentID":"1", "name":"Node10", "ID":"10"],
-                    ["parentID":"1", "name":"Node11", "ID":"11"],
-                    ["parentID":"10", "name":"Node100", "ID":"100"],
-                    ["parentID":"10", "name":"Node101", "ID":"101"],
-                    ["parentID":"11", "name":"Node110", "ID":"110"],
-                    ["parentID":"11", "name":"Node111", "ID":"111"],
-                    ["parentID":"111", "name":"Node1110", "ID":"1110"],
-                    ["parentID":"111", "name":"Node1111", "ID":"1111"],
-                    ["parentID":"", "name":"Node2", "ID":"2"],
-                    ["parentID":"2", "name":"Node20", "ID":"20"],
-                    ["parentID":"20", "name":"Node200", "ID":"200"],
-                    ["parentID":"20", "name":"Node201", "ID":"201"],
-                    ["parentID":"20", "name":"Node202", "ID":"202"],
-                    ["parentID":"2", "name":"Node21", "ID":"21"],
-                    ["parentID":"21", "name":"Node210", "ID":"210"],
-                    ["parentID":"21", "name":"Node211", "ID":"211"],
-                    ["parentID":"21", "name":"Node212", "ID":"212"],
-                    ["parentID":"211", "name":"Node2110", "ID":"2110"],
-                    ["parentID":"211", "name":"Node2111", "ID":"2111"],]
+    func fakeData() -> [JKNodeModel] {        
+        
+        let list = [["parentID":"", "name":"Node1", "ID":"1", "hasChildrenRegion":"1"],
+                    ["parentID":"1", "name":"Node10", "ID":"10", "hasChildrenRegion":"1"],
+                    ["parentID":"1", "name":"Node11", "ID":"11", "hasChildrenRegion":"1"],
+                    ["parentID":"10", "name":"Node100", "ID":"100", "hasChildrenRegion":"0"],
+                    ["parentID":"10", "name":"Node101", "ID":"101", "hasChildrenRegion":"0"],
+                    ["parentID":"11", "name":"Node110", "ID":"110", "hasChildrenRegion":"0"],
+                    ["parentID":"11", "name":"Node111", "ID":"111", "hasChildrenRegion":"1"],
+                    ["parentID":"111", "name":"Node1110", "ID":"1110", "hasChildrenRegion":"0"],
+                    ["parentID":"111", "name":"Node1111", "ID":"1111", "hasChildrenRegion":"0"],
+                    ["parentID":"", "name":"Node2", "ID":"2", "hasChildrenRegion":"1"],
+                    ["parentID":"2", "name":"Node20", "ID":"20", "hasChildrenRegion":"1"],
+                    ["parentID":"20", "name":"Node200", "ID":"200", "hasChildrenRegion":"0"],
+                    ["parentID":"20", "name":"Node201", "ID":"201", "hasChildrenRegion":"0"],
+                    ["parentID":"20", "name":"Node202", "ID":"202", "hasChildrenRegion":"0"],
+                    ["parentID":"2", "name":"Node21", "ID":"21", "hasChildrenRegion":"1"],
+                    ["parentID":"21", "name":"Node210", "ID":"210", "hasChildrenRegion":"0"],
+                    ["parentID":"21", "name":"Node211", "ID":"211", "hasChildrenRegion":"1"],
+                    ["parentID":"21", "name":"Node212", "ID":"212", "hasChildrenRegion":"0"],
+                    ["parentID":"211", "name":"Node2110", "ID":"2110", "hasChildrenRegion":"0"],
+                    ["parentID":"211", "name":"Node2111", "ID":"2111", "hasChildrenRegion":"0"]]
         var array = [JKNodeModel]()
         for dic in list {
-            if let pID = dic["parentID"],let name = dic["name"],let id = dic["ID"] {
-                let node = JKNodeModel.init(parentID: pID, name: name, childrenID: id)
+            if let pID = dic["parentID"],let name = dic["name"],let id = dic["ID"],let hasChild = dic["hasChildrenRegion"] {
+                let node = JKNodeModel.init(parentID: pID, name: name, childrenID: id, hasChildrenRegion: hasChild)
                 array.append(node)
             }
         }

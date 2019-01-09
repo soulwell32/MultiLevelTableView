@@ -9,6 +9,11 @@
 import Foundation
 
 class JKNodeModel {
+    //真实数据属性
+    var hasChildrenRegion: String!
+//    var parentCode:String!
+//    var regionCode:String!
+    
     var parentID: String!
     var childrenID: String!
     var name: String?
@@ -18,15 +23,16 @@ class JKNodeModel {
     var isRoot: Bool = false
     var isSelected: Bool = false
     
-    convenience init(parentID:String, name:String,childrenID:String) {
-        self.init(parentID: parentID, name: name, childrenID: childrenID, level: nil)
+    convenience init(parentID:String, name:String, childrenID:String, hasChildrenRegion:String) {
+        self.init(parentID: parentID, name: name, childrenID: childrenID, level: nil, hasChildrenRegion: hasChildrenRegion)
     }
     
-    init (parentID:String, name:String, childrenID:String, level:Int?) {
+    init (parentID:String, name:String, childrenID:String, level:Int?, hasChildrenRegion:String) {
         self.parentID = parentID
         self.name = name
         self.childrenID = childrenID
         self.level = level
+        self.hasChildrenRegion = hasChildrenRegion
     }
     
     var description: String {

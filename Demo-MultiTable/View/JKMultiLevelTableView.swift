@@ -61,11 +61,11 @@ class JKMultiLevelTableView: UITableView {
         for node in nodes {
             var isLeaf = true
             var isRoot = true
-            for tempNode in nodes {
-                if tempNode.parentID == node.childrenID {
+            for anotherNode in nodes {
+                if anotherNode.parentID == node.childrenID {
                     isLeaf = false
                 }
-                if tempNode.childrenID == node.parentID {
+                if anotherNode.childrenID == node.parentID {
                     isRoot = false
                 }
                 if (isLeaf == false && isRoot == false) {
@@ -137,8 +137,8 @@ extension JKMultiLevelTableView : UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "JKMultiLevelCell") as! JKMultiLevelCell
         cell.node(node: tempNodes[indexPath.row])
-        cell.cellIndicatorBlock = { node in
-            
+        cell.cellIndicatorBlock = {[weak self] node in
+            self?.updateSelectedNode(nodeID: node.childrenID)
         }
         return cell
     }

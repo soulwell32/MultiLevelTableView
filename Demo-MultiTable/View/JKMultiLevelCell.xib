@@ -40,21 +40,20 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pCq-es-JAL">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jXa-kc-OyQ">
                         <rect key="frame" x="27" y="32.5" width="30" height="30"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <gestureRecognizers/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="lMt-7A-gtt"/>
-                            <constraint firstAttribute="width" constant="30" id="nBf-qB-LHM"/>
+                            <constraint firstAttribute="height" constant="30" id="FZ1-hk-HR3"/>
+                            <constraint firstAttribute="width" constant="30" id="VN1-a1-JXZ"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="uaX-Ni-Hvi" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6pX-gY-tJh"/>
                     <constraint firstItem="uaX-Ni-Hvi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="920-QX-xwX"/>
-                    <constraint firstItem="pCq-es-JAL" firstAttribute="centerY" secondItem="Qc3-6P-t9w" secondAttribute="centerY" id="E1s-B3-08J"/>
-                    <constraint firstItem="pCq-es-JAL" firstAttribute="centerX" secondItem="Qc3-6P-t9w" secondAttribute="centerX" id="Nv4-Vk-9qP"/>
+                    <constraint firstItem="jXa-kc-OyQ" firstAttribute="centerY" secondItem="Qc3-6P-t9w" secondAttribute="centerY" id="Mli-q0-uBQ"/>
+                    <constraint firstItem="jXa-kc-OyQ" firstAttribute="centerX" secondItem="Qc3-6P-t9w" secondAttribute="centerX" id="UW6-sZ-iKX"/>
                     <constraint firstItem="hVN-gt-XxZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="aH4-Rj-t9E"/>
                     <constraint firstItem="Qc3-6P-t9w" firstAttribute="leading" secondItem="uaX-Ni-Hvi" secondAttribute="trailing" constant="10" id="iOJ-dw-oC6"/>
                     <constraint firstItem="hVN-gt-XxZ" firstAttribute="leading" secondItem="Qc3-6P-t9w" secondAttribute="trailing" constant="10" id="jeW-8q-Xe6"/>
@@ -68,6 +67,7 @@
                 <outlet property="arrowViewWidthConstrain" destination="bQd-hJ-3Ea" id="Cbc-4u-Yn9"/>
                 <outlet property="nameLabel" destination="hVN-gt-XxZ" id="qfl-e8-8Fo"/>
                 <outlet property="selectIndicatorView" destination="Qc3-6P-t9w" id="vQM-S1-h7c"/>
+                <outlet property="tapView" destination="jXa-kc-OyQ" id="RSh-HQ-e2I"/>
             </connections>
             <point key="canvasLocation" x="-5.5999999999999996" y="88.605697151424295"/>
         </tableViewCell>
