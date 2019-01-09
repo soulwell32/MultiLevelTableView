@@ -48,6 +48,10 @@ class JKMultiLevelTableView: UITableView {
         super.init(coder: aDecoder)
     }
     
+    deinit {
+        print("JKMultiLevelTableView deinit ---~~~---")
+    }
+    
     // MARK: - Nodes Config
     func configNodes(nodes:[JKNodeModel]) {
         self.nodes = nodes
@@ -55,6 +59,11 @@ class JKMultiLevelTableView: UITableView {
         updateNodesLevel()
         addFirstLoadNodes()
         reloadData()
+    }
+    
+    func addNodesFromRequest(newNodes:[JKNodeModel]) {
+        nodes.append(contentsOf: newNodes)
+        updateNodesLevel()
     }
     
     //项目自带root、leaf属性
@@ -149,7 +158,6 @@ extension JKMultiLevelTableView : UITableViewDataSource,UITableViewDelegate {
             //1.LeafNode处理点击事件
             guard selectBlock != nil else {return}
             selectBlock!(node)
-            
             updateSelectedNode(nodeID: node.childrenID)
             return
         } else {
@@ -162,8 +170,19 @@ extension JKMultiLevelTableView : UITableViewDataSource,UITableViewDelegate {
         reloadArray?.removeAll()
         if node.isExpand {
             //2.展开节点
-            expandNodesFor(parentID: node.childrenID!, insertIndex: indexPath.row)
-            tableView.insertRows(at: reloadArray!, with: .none)
+            //2.1新增网络请求判断
+            if needRequestExpandNodes(node: node) {
+                FakeNetwork.shared.queryChildrenRegion(region: node.childrenID) {[weak self] (bool, nodeArray) in
+                    if bool {
+                        self?.addNodesFromRequest(newNodes: nodeArray!)
+                        self?.expandNodesFor(parentID: node.childrenID!, insertIndex: indexPath.row)
+                        tableView.insertRows(at: (self?.reloadArray)!, with: .none)
+                    }
+                }
+            } else {
+                expandNodesFor(parentID: node.childrenID!, insertIndex: indexPath.row)
+                tableView.insertRows(at: reloadArray!, with: .none)
+            }
         } else {
             //3.收起节点
             foldNodesFor(level: node.level!, currentIndex: indexPath.row)
@@ -175,6 +194,15 @@ extension JKMultiLevelTableView : UITableViewDataSource,UITableViewDelegate {
 
 // MARK: - Cells Expand or Fold
 extension JKMultiLevelTableView {
+    func needRequestExpandNodes(node: JKNodeModel) -> Bool {
+        for everyNode in nodes {
+            if everyNode.parentID == node.childrenID {
+                return false
+            }
+        }
+        return true
+    }
+    
     func expandNodesFor(parentID:String, insertIndex: Int) -> Void {
         var theInsertIndex = insertIndex
         for node in nodes {
