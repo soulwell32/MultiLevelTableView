@@ -88,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6D5C094B21E63107005DB639 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				6D5C094921E62E1B005DB639 /* ArrayExtension.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		BF05AC3821DCB0B700F9DC0C = {
 			isa = PBXGroup;
 			children = (
@@ -115,7 +123,7 @@
 				BF05AC4621DCB0B700F9DC0C /* TreeViewController.swift */,
 				BFB2826C21E5E83F00A6A4A4 /* HomeViewController.swift */,
 				BFB2826A21E5D9B700A6A4A4 /* FakeNetwork.swift */,
-				6D5C094921E62E1B005DB639 /* ArrayExtension.swift */,
+				6D5C094B21E63107005DB639 /* Support */,
 				BFDE69FD21DF2FA1004CB3FD /* Model */,
 				BFDE69FC21DF2F80004CB3FD /* View */,
 				BF05AC4821DCB0B700F9DC0C /* Main.storyboard */,
