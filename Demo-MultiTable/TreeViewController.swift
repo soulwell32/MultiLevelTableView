@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TreeViewController.swift
 //  Demo-MultiTable
 //
 //  Created by 梅霖 on 2019/1/2.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class TreeViewController: UIViewController {
     var displayLevelView: JKMultiLevelTableView?
     var selectedRegionBlock: ((JKNodeModel)->Void)?
     
@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     }
     
     deinit {
-        print("ViewController deinit ---~~~---")
+        print("TreeViewController deinit ---~~~---")
     }
 
     func initUI() {

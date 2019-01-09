@@ -20,7 +20,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func regionButtonClicked(_ sender: UIButton) {
-        let regionVC = ViewController()
+        let regionVC = TreeViewController()
         regionVC.selectedRegionBlock = { selectedNode in
             self.regionButton.setTitle(selectedNode.name, for: .normal)
         }
