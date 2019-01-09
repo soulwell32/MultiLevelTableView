@@ -13,8 +13,8 @@ class JKMultiLevelCell: UITableViewCell {
     @IBOutlet weak var arrowView: UIImageView!
     @IBOutlet weak var selectIndicatorView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var arrowViewLeadingConstrain: NSLayoutConstraint!
-    @IBOutlet weak var arrowViewWidthConstrain: NSLayoutConstraint!
+    @IBOutlet weak var selectIndicatorViewLeadingConstrain: NSLayoutConstraint!
+    
     @IBOutlet weak var tapView: UIView!
     
     var cellIndicatorBlock:((JKNodeModel) -> Void)?
@@ -41,7 +41,7 @@ class JKMultiLevelCell: UITableViewCell {
     func node(node:JKNodeModel) {
         self.cellNode = node
         nameLabel.text = node.name
-        arrowViewLeadingConstrain.constant = 10 + levelMarginDistance * CGFloat((node.level! - 1))
+        selectIndicatorViewLeadingConstrain.constant = 18 + levelMarginDistance * CGFloat((node.level! - 1))
         
         if node.isExpand {
             arrowView.image = UIImage.init(named: "upArrow")
