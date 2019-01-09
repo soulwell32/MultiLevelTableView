@@ -25,7 +25,7 @@ class JKMultiLevelTableView: UITableView {
     // MARK: - init
     convenience init(frame:CGRect, nodes:[JKNodeModel], rootID:String?, selectBlock:((JKNodeModel) -> Void)?) {
         self.init(frame: frame, style: .plain)
-        self.rootID = rootID ?? ""
+        self.rootID = rootID ?? "-1"
         self.selectBlock = selectBlock
         self.preservation = false
         configNodes(nodes: nodes)
@@ -51,12 +51,14 @@ class JKMultiLevelTableView: UITableView {
     // MARK: - Nodes Config
     func configNodes(nodes:[JKNodeModel]) {
         self.nodes = nodes
-        judgeLeafAndRootNodes()
+//        judgeLeafAndRootNodes()
         updateNodesLevel()
         addFirstLoadNodes()
         reloadData()
     }
     
+    //项目自带root、leaf属性
+    /*
     func judgeLeafAndRootNodes() {
         for node in nodes {
             var isLeaf = true
@@ -76,6 +78,7 @@ class JKMultiLevelTableView: UITableView {
             node.isLeaf = isLeaf
         }
     }
+    */
     
     func updateNodesLevel() {
         setDepthWithParentIdAndChildrenNodes(nodeLevel: 1, parentIDs: [rootID], childrenNodes: nodes)
@@ -112,10 +115,6 @@ class JKMultiLevelTableView: UITableView {
     
     func updateSelectedNode(nodeID:String) {
         selectedNodeID = nodeID
-        // TODO: TODO --- --- wait to debug
-//        tempNodes.forEach { (node) in
-//            if node.isSelected == true &&
-//        }
         nodes.forEach { (node) in
             if node.childrenID != selectedNodeID {
                 node.isSelected = false

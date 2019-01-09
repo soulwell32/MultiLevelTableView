@@ -33,6 +33,10 @@ class JKNodeModel {
         self.childrenID = childrenID
         self.level = level
         self.hasChildrenRegion = hasChildrenRegion
+        
+        //项目特性可以直接判断
+        self.isRoot = parentID == "-1" ? true : false
+        self.isLeaf = hasChildrenRegion == "0" ? true : false
     }
     
     var description: String {
