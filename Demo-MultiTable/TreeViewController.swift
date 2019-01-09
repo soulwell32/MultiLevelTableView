@@ -26,7 +26,7 @@ class TreeViewController: UIViewController {
     func initUI() {
         self.view.backgroundColor = UIColor.white
         let frame = self.view.frame
-        let rect = CGRect.init(x: 20, y: 20, width: frame.width - 40, height: frame.height - 40)
+        let rect = CGRect.init(x: 0, y: 20, width: frame.width, height: frame.height - 40)
         let fakeNodes = fakeData()
         displayLevelView = JKMultiLevelTableView.init(frame: rect, nodes: fakeNodes, rootID: nil, selectBlock: { (selectedNode) in
             print("选中节点" + (selectedNode.name ?? "name is nil"))
@@ -35,6 +35,17 @@ class TreeViewController: UIViewController {
             }
         })
         self.view.addSubview(displayLevelView!)
+        
+        let searchItem = UIBarButtonItem.init(barButtonSystemItem: .search, target: self, action: #selector(searchAction))
+        self.navigationItem.rightBarButtonItem = searchItem
+    }
+    
+    @objc func searchAction() -> Void {
+        if let resultNodes = FakeNetwork.shared.searchNodes(nodeName: "11") {
+            for node in resultNodes {
+                print("\(node.description)\n")
+            }
+        }
     }
     
     func fakeData() -> [JKNodeModel] {

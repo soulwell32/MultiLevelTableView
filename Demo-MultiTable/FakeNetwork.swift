@@ -52,6 +52,8 @@ class FakeNetwork {
         var list = [[String:String]]()
         
         switch region {
+        case "-1":
+            list = wholeList
         case "2":
             list = node2List
         case "21":
@@ -68,5 +70,16 @@ class FakeNetwork {
             }
         }
         return array as [JKNodeModel]
+    }
+    
+    func searchNodes(nodeName: String) -> [JKNodeModel]? {
+        let originNodes = FakeNetwork.shared.fakeData(region: "-1")
+        var result = [JKNodeModel]()
+        for eveNode in originNodes! {
+            if eveNode.name!.contains(nodeName) {
+                result.append(eveNode)
+            }
+        }
+        return result
     }
 }
