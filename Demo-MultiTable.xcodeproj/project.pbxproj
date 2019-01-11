@@ -21,6 +21,8 @@
 		BFAB6EE921DDEE780041B8AE /* JKNodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAB6EE821DDEE780041B8AE /* JKNodeModel.swift */; };
 		BFB2826B21E5D9B700A6A4A4 /* FakeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB2826A21E5D9B700A6A4A4 /* FakeNetwork.swift */; };
 		BFB2826D21E5E83F00A6A4A4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB2826C21E5E83F00A6A4A4 /* HomeViewController.swift */; };
+		BFCA23BE21E893AF00C557E6 /* JKSearchHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCA23BD21E893AF00C557E6 /* JKSearchHistoryView.swift */; };
+		BFCA23C021E8946700C557E6 /* SearchRegionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCA23BF21E8946700C557E6 /* SearchRegionVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		BFAB6EE821DDEE780041B8AE /* JKNodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JKNodeModel.swift; sourceTree = "<group>"; };
 		BFB2826A21E5D9B700A6A4A4 /* FakeNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeNetwork.swift; sourceTree = "<group>"; };
 		BFB2826C21E5E83F00A6A4A4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		BFCA23BD21E893AF00C557E6 /* JKSearchHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JKSearchHistoryView.swift; sourceTree = "<group>"; };
+		BFCA23BF21E8946700C557E6 /* SearchRegionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRegionVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +160,7 @@
 			children = (
 				BFDE69FD21DF2FA1004CB3FD /* Model */,
 				BFDE69FC21DF2F80004CB3FD /* View */,
+				BFCA23BF21E8946700C557E6 /* SearchRegionVC.swift */,
 			);
 			path = LevelFunc;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 		BFDE69FC21DF2F80004CB3FD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BFCA23BD21E893AF00C557E6 /* JKSearchHistoryView.swift */,
 				BFAB6EE221DDBA950041B8AE /* JKMultiLevelTableView.swift */,
 				BFAB6EE421DDBC310041B8AE /* JKMultiLevelCell.swift */,
 				BFAB6EE521DDBC310041B8AE /* JKMultiLevelCell.xib */,
@@ -312,9 +318,11 @@
 			files = (
 				BF05AC4721DCB0B700F9DC0C /* TreeViewController.swift in Sources */,
 				BFB2826B21E5D9B700A6A4A4 /* FakeNetwork.swift in Sources */,
+				BFCA23C021E8946700C557E6 /* SearchRegionVC.swift in Sources */,
 				BF05AC4521DCB0B700F9DC0C /* AppDelegate.swift in Sources */,
 				6D5C094A21E62E1B005DB639 /* ArrayExtension.swift in Sources */,
 				BFAB6EE621DDBC310041B8AE /* JKMultiLevelCell.swift in Sources */,
+				BFCA23BE21E893AF00C557E6 /* JKSearchHistoryView.swift in Sources */,
 				BFAB6EE321DDBA950041B8AE /* JKMultiLevelTableView.swift in Sources */,
 				BFB2826D21E5E83F00A6A4A4 /* HomeViewController.swift in Sources */,
 				BFAB6EE921DDEE780041B8AE /* JKNodeModel.swift in Sources */,
