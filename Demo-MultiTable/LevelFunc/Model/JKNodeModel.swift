@@ -8,12 +8,9 @@
 
 import Foundation
 
-class JKNodeModel {
-    //真实数据属性
-    var hasChildrenRegion: String!
-//    var parentCode:String!
-//    var regionCode:String!
+class JKNodeModel:NSObject,NSCoding {
     
+    var hasChildrenRegion: String!
     var parentID: String!
     var childrenID: String!
     var name: String?
@@ -22,6 +19,14 @@ class JKNodeModel {
     var isLeaf: Bool = false
     var isRoot: Bool = false
     var isSelected: Bool = false
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(name, forKey: "name")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        name = aDecoder.decodeObject(forKey: "name") as? String
+    }
     
     convenience init(parentID:String, name:String, childrenID:String, hasChildrenRegion:String) {
         self.init(parentID: parentID, name: name, childrenID: childrenID, level: nil, hasChildrenRegion: hasChildrenRegion)
@@ -39,8 +44,8 @@ class JKNodeModel {
         self.isLeaf = hasChildrenRegion == "0" ? true : false
     }
     
-    var description: String {
-        return "\(String(describing: name)) level:\(String(describing: level)) isExpand:\(isExpand)"
+    override var description: String {
+        return "name:\(String(describing: name)) level:\(String(describing: level)) isExpand:\(isExpand)"
     }
 }
 

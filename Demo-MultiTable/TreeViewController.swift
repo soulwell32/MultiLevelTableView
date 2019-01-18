@@ -33,6 +33,14 @@ class TreeViewController: UIViewController {
             if self.selectedRegionBlock != nil {
                 self.selectedRegionBlock!(selectedNode)
             }
+            
+            //FIXME: test local save
+            do {
+                let encodeData = try NSKeyedArchiver.archivedData(withRootObject: selectedNode, requiringSecureCoding: false)
+                UserDefaults.standard.set(encodeData, forKey: "TEST_ARCHIVE")
+            } catch let error {
+                print("archived error:\(error)")
+            }
         })
         self.view.addSubview(displayLevelView!)
         

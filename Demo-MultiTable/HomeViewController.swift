@@ -27,6 +27,14 @@ class HomeViewController: UIViewController {
         self.navigationController?.pushViewController(regionVC, animated: true)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if let encodeData = UserDefaults.standard.object(forKey: "TEST_ARCHIVE") as? Data {
+            let node = NSKeyedUnarchiver.unarchiveObject(with: encodeData) as! JKNodeModel
+            print("local archived node" + node.description)
+            
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
