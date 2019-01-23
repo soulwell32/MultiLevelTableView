@@ -45,7 +45,26 @@ class JKNodeModel:NSObject,NSCoding {
     }
     
     override var description: String {
-        return "name:\(String(describing: name)) level:\(String(describing: level)) isExpand:\(isExpand)"
+        return "parentID:\(String(describing: parentID)) childrenID:\(String(describing: childrenID)) name:\(String(describing: name)) level:\(String(describing: level)) isExpand:\(isExpand)"
     }
 }
 
+// MARK: - Important: Always use the same properties in both your == and hash(into:) methods
+// MARK: - NSObject已经遵守了Hashable协议
+extension JKNodeModel {
+    override var hash:Int {
+        var hasher = Hasher()
+        hasher.combine(parentID)
+        hasher.combine(childrenID)
+        hasher.combine(name)
+        return hasher.finalize()
+    }
+}
+
+// MARK: - NSObject已经遵守了Equatable协议
+extension JKNodeModel {
+    override func isEqual(_ object: Any?) -> Bool {
+        guard let other = object as? JKNodeModel else { return false }
+        return self.parentID == other.parentID && self.childrenID == other.childrenID && self.name == other.name
+    }
+}

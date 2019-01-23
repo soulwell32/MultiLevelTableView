@@ -32,6 +32,18 @@ class TreeViewController: UIViewController {
             print("选中节点" + (selectedNode.name ?? "name is nil"))
             if self.selectedRegionBlock != nil {
                 self.selectedRegionBlock!(selectedNode)
+                if fakeNodes.contains(selectedNode) {
+                    print("selected node contained in fakeNodes")
+                } else {
+                    print("selected node not contained!")
+                }
+                
+                let equalNodesArr = fakeNodes.filter({ (node) -> Bool in
+                    node == selectedNode
+                })
+                for (i,node) in equalNodesArr.enumerated() {
+                    print("equalNodesArr \(i) \(node.description)")
+                }
             }
             
             //FIXME: test local save
